@@ -12,6 +12,7 @@ namespace Censor_Me
             this.RunButton.Enabled = false;
         }
 
+        private string filename;
         private Image Load_Image;
         private Detect detect = new Detect();
 
@@ -21,7 +22,8 @@ namespace Censor_Me
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    Load_Image = Image.FromFile(ofd.FileName);
+                    filename = ofd.FileName;
+                    Load_Image = Image.FromFile(filename);
                     MainPictureBox.Image = Load_Image;
                     this.RunButton.Enabled = true;
                 }
@@ -30,7 +32,20 @@ namespace Censor_Me
 
         private void RunButton_Click(object sender, EventArgs e)
         {
-            MainPictureBox.Image = detect.Face(Load_Image);
+            StatusLabel.Text = "画像を解析しています... ｜ " + filename;
+
+            //UIの更新
+            Application.DoEvents();
+
+            try
+            {
+                MainPictureBox.Image = detect.Face(Load_Image);
+                StatusLabel.Text = "画像の解析が完了しました。";
+            }
+            catch(Exception ex)
+            {
+                StatusLabel.Text = ex.Message;
+            }
         }
     }
 }
