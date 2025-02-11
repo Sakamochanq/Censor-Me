@@ -10,9 +10,22 @@ namespace Censor_Me
         {
             InitializeComponent();
             this.RunButton.Enabled = false;
+
+            timer = new Timer();
+            timer.Interval = 5000;
+
+            //タイマーイベントを追加
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            StatusLabel.Text = "待機中";
+            timer.Stop();
         }
 
         private string filename;
+        private Timer timer;
         private Image Load_Image;
         private Detect detect = new Detect();
 
@@ -41,6 +54,7 @@ namespace Censor_Me
             {
                 MainPictureBox.Image = detect.Face(Load_Image);
                 StatusLabel.Text = "画像の解析が完了しました。";
+                timer.Start();
             }
             catch(Exception ex)
             {

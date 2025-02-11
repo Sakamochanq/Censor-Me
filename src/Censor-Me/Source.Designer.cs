@@ -111,8 +111,8 @@
             // StatusLabel
             // 
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(69, 22);
-            this.StatusLabel.Text = "unknown ...";
+            this.StatusLabel.Size = new System.Drawing.Size(43, 22);
+            this.StatusLabel.Text = "待機中";
             // 
             // RunButton
             // 
