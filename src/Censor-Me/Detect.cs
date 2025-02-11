@@ -1,6 +1,7 @@
 ﻿using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Censor_Me
 {
@@ -21,6 +22,13 @@ namespace Censor_Me
                     minNeighbors: 6,
                     minSize: new OpenCvSharp.Size(50, 50)
                 );
+
+                if (faces.Length == 0)
+                {
+                    MessageBox.Show("顔が見つかりませんでした。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // 元の画像をそのまま返す
+                    return load_image;
+                }
 
                 // 顔に四角を描画
                 foreach (var rect in faces)
