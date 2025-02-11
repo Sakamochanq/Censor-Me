@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System;
 
 namespace Censor_Me
 {
@@ -11,16 +12,25 @@ namespace Censor_Me
             this.RunButton.Enabled = false;
         }
 
-        private void OpenButton_Click(object sender, System.EventArgs e)
+        private Image Load_Image;
+        private Detect detect = new Detect();
+
+        private void OpenButton_Click(object sender, EventArgs e)
         {
-            using(var ofd = new OpenFileDialog() { Filter = "Windows画像形式(*.bmp *.jpg *.jpeg *.png *.emf) | *.bmp; *.jpg; *.jpeg; *.png; *.emf" })
+            using (var ofd = new OpenFileDialog() { Filter = "Windows画像形式(*.bmp *.jpg *.jpeg *.png *.emf) | *.bmp; *.jpg; *.jpeg; *.png; *.emf" })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    MainPictureBox.Image = Image.FromFile(ofd.FileName);
+                    Load_Image = Image.FromFile(ofd.FileName);
+                    MainPictureBox.Image = Load_Image;
                     this.RunButton.Enabled = true;
                 }
             }
+        }
+
+        private void RunButton_Click(object sender, EventArgs e)
+        {
+            MainPictureBox.Image = detect.Face(Load_Image);
         }
     }
 }

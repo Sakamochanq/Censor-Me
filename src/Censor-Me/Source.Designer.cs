@@ -123,6 +123,7 @@
             this.RunButton.TabIndex = 3;
             this.RunButton.Text = "モザイク処理の実行";
             this.RunButton.UseVisualStyleBackColor = true;
+            this.RunButton.Click += new System.EventHandler(this.RunButton_Click);
             // 
             // Source
             // 
