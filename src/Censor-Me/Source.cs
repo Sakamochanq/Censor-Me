@@ -10,6 +10,8 @@ namespace Censor_Me
         {
             InitializeComponent();
             this.RunButton.Enabled = false;
+            this.ApplyMosaicBox.Enabled = false;
+            this.ApplyMosaicBox.Checked = true;
 
             timer = new Timer();
             timer.Interval = 5000;
@@ -24,6 +26,7 @@ namespace Censor_Me
             timer.Stop();
         }
 
+        private bool Is;
         private string filename;
         private Timer timer;
         private Image Load_Image;
@@ -46,14 +49,16 @@ namespace Censor_Me
         private void RunButton_Click(object sender, EventArgs e)
         {
             StatusLabel.Text = "画像を解析しています... ｜ " + filename;
+            Is = ApplyMosaicBox.Checked;
 
             //UIの更新
             Application.DoEvents();
 
             try
             {
-                MainPictureBox.Image = detect.Face(Load_Image);
+                MainPictureBox.Image = detect.Face(Load_Image, Is);
                 StatusLabel.Text = "画像の解析が完了しました。";
+                ApplyMosaicBox.Enabled = true;
                 timer.Start();
             }
             catch(Exception ex)
@@ -65,6 +70,15 @@ namespace Censor_Me
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ApplyMosaicBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MainPictureBox.Image != null)
+            {
+                Is = ApplyMosaicBox.Checked;
+                MainPictureBox.Image = detect.Face(Load_Image, Is);
+            }
         }
     }
 }

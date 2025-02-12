@@ -7,7 +7,7 @@ namespace Censor_Me
 {
     internal class Detect
     {
-        public Image Face(Image load_image)
+        public Image Face(Image load_image, bool apply)
         {
             // Image型をMat型に変換
             Mat mat = BitmapConverter.ToMat((Bitmap)load_image);
@@ -36,10 +36,13 @@ namespace Censor_Me
                     Cv2.Rectangle(mat, rect, new Scalar(0, 0, 255), 3);
 
                     //モザイク処理
-                    var roi = mat[rect];
-                    roi = roi.Resize(new OpenCvSharp.Size(rect.Width / 20, rect.Height / 20));
-                    roi = roi.Resize(new OpenCvSharp.Size(rect.Width, rect.Height), 0, 0, InterpolationFlags.Cubic);
-                    roi.CopyTo(mat[rect]);
+                    if (apply == true)
+                    {
+                        var roi = mat[rect];
+                        roi = roi.Resize(new OpenCvSharp.Size(rect.Width / 20, rect.Height / 20));
+                        roi = roi.Resize(new OpenCvSharp.Size(rect.Width, rect.Height), 0, 0, InterpolationFlags.Cubic);
+                        roi.CopyTo(mat[rect]);
+                    }
                 }
 
                 // Mat型をImage型に変換して返す

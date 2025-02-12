@@ -38,6 +38,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.RunButton = new System.Windows.Forms.Button();
+            this.ApplyMosaicBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -126,11 +127,23 @@
             this.RunButton.UseVisualStyleBackColor = true;
             this.RunButton.Click += new System.EventHandler(this.RunButton_Click);
             // 
+            // ApplyMosaicBox
+            // 
+            this.ApplyMosaicBox.AutoSize = true;
+            this.ApplyMosaicBox.Location = new System.Drawing.Point(453, 105);
+            this.ApplyMosaicBox.Name = "ApplyMosaicBox";
+            this.ApplyMosaicBox.Size = new System.Drawing.Size(94, 16);
+            this.ApplyMosaicBox.TabIndex = 4;
+            this.ApplyMosaicBox.Text = "モザイクの有無";
+            this.ApplyMosaicBox.UseVisualStyleBackColor = true;
+            this.ApplyMosaicBox.CheckedChanged += new System.EventHandler(this.ApplyMosaicBox_CheckedChanged);
+            // 
             // Source
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 390);
+            this.Controls.Add(this.ApplyMosaicBox);
             this.Controls.Add(this.RunButton);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainPictureBox);
@@ -162,6 +175,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel StatusLabel;
         private System.Windows.Forms.Button RunButton;
+        private System.Windows.Forms.CheckBox ApplyMosaicBox;
     }
 }
 
