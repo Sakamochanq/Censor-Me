@@ -34,6 +34,11 @@ namespace Censor_Me
 
         private void OpenButton_Click(object sender, EventArgs e)
         {
+            if (ApplyMosaicBox.Enabled == true)
+            {
+                ApplyMosaicBox.Enabled = false;
+            }
+
             using (var ofd = new OpenFileDialog() { Filter = "Windows画像形式(*.bmp *.jpg *.jpeg *.png *.emf) | *.bmp; *.jpg; *.jpeg; *.png; *.emf" })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
