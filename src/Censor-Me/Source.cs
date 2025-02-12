@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using System;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace Censor_Me
 {
@@ -69,6 +71,58 @@ namespace Censor_Me
             catch(Exception ex)
             {
                 StatusLabel.Text = ex.Message;
+            }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if(MainPictureBox.Image != null)
+            {
+                using (var sfd = new SaveFileDialog() { Filter = "BitMap形式(*.bmp) | *.bmp; | PNG形式(*.png) | *.png; | JPEG形式(*.jpg *.jpeg) | *.jpg; *.jpeg; | Windowsメタ形式(*.wmf) | *.wmf;" })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            string FileName = sfd.FileName;
+
+                            switch (Path.GetExtension(FileName).ToLower())
+                            {
+                                case ".bmp":
+                                    MainPictureBox.Image.Save(FileName, ImageFormat.Bmp);
+                                    StatusLabel.Text = "画像を保存しました。 | " + FileName;
+                                    timer.Start();
+                                    break;
+
+                                case ".png":
+                                    MainPictureBox.Image.Save(FileName, ImageFormat.Png);
+                                    StatusLabel.Text = "画像を保存しました。 | " + FileName;
+                                    timer.Start();
+                                    break;
+
+                                case ".jpg":
+                                case ".jpeg":
+                                    MainPictureBox.Image.Save(FileName, ImageFormat.Jpeg);
+                                    StatusLabel.Text = "画像を保存しました。 | " + FileName;
+                                    timer.Start();
+                                    break;
+                                case ".wmf":
+                                    MainPictureBox.Image.Save(FileName, ImageFormat.Wmf);
+                                    StatusLabel.Text = "画像を保存しました。 | " + FileName;
+                                    timer.Start();
+                                    break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("保存できる画像がありません。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
