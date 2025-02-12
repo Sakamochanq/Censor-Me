@@ -33,7 +33,7 @@ namespace Censor_Me
                 // 顔に四角を描画
                 foreach (var rect in faces)
                 {
-                    Cv2.Rectangle(mat, rect, new Scalar(0, 0, 255), 3);
+                    //Cv2.Rectangle(mat, rect, new Scalar(0, 0, 255), 3);
 
                     //モザイク処理
                     if (apply == true)
