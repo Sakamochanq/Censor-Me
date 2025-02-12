@@ -35,12 +35,15 @@ namespace Censor_Me
                 {
                     //Cv2.Rectangle(mat, rect, new Scalar(0, 0, 255), 3);
 
-                    //モザイク処理
+                    // モザイク処理（ブラーに変更）
                     if (apply == true)
                     {
                         var roi = mat[rect];
-                        roi = roi.Resize(new OpenCvSharp.Size(rect.Width / 20, rect.Height / 20));
-                        roi = roi.Resize(new OpenCvSharp.Size(rect.Width, rect.Height), 0, 0, InterpolationFlags.Cubic);
+
+                        // ガウシアンブラーを適用（カーネルサイズ (int, int)、標準偏差 int）
+                        Cv2.GaussianBlur(roi, roi, new OpenCvSharp.Size(125, 125), 0);
+
+                        // ぼかしたROIを元の画像に適用
                         roi.CopyTo(mat[rect]);
                     }
                 }
