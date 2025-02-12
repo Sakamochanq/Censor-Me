@@ -16,7 +16,7 @@ namespace Censor_Me
             this.ApplyMosaicBox.Checked = true;
 
             timer = new Timer();
-            timer.Interval = 5000;
+            timer.Interval = 7000;
 
             //タイマーイベントを追加
             timer.Tick += Timer_Tick;
