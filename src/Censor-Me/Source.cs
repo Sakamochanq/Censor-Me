@@ -61,5 +61,10 @@ namespace Censor_Me
                 StatusLabel.Text = ex.Message;
             }
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
