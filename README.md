@@ -19,7 +19,7 @@
 <br>
 <br>
 
-> [任意のバージョンでダウンロード](#)
+> [任意のバージョンでダウンロード](https://github.com/Sakamochanq/Censor-Me/releases/tag/v1.0)
 
 <br>
 
