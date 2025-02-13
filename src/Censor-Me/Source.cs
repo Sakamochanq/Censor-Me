@@ -65,7 +65,16 @@ namespace Censor_Me
             {
                 MainPictureBox.Image = detect.Face(Load_Image, Is);
                 StatusLabel.Text = "画像の解析が完了しました。";
-                ApplyMosaicBox.Enabled = true;
+
+                if(detect.face == false)
+                {
+                    ApplyMosaicBox.Enabled = false;
+                }
+                else
+                {
+                    ApplyMosaicBox.Enabled = true;
+                }
+
                 timer.Start();
             }
             catch(Exception ex)
