@@ -69,6 +69,9 @@ namespace Censor_Me
                 if(detect.face == false)
                 {
                     ApplyMosaicBox.Enabled = false;
+                    StatusLabel.Text = "顔が見つかりませんでした。";
+                    //MessageBox.Show("顔が見つかりませんでした。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 }
                 else
                 {

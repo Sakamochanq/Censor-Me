@@ -30,7 +30,6 @@ namespace Censor_Me
 
                 if (!face)
                 {
-                    MessageBox.Show("顔が見つかりませんでした。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     // 元の画像をそのまま返す
                     return load_image;
                 }
