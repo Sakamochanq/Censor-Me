@@ -32,14 +32,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.開くFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPictureBox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.RunButton = new System.Windows.Forms.Button();
             this.ApplyMosaicBox = new System.Windows.Forms.CheckBox();
-            this.SaveButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -75,6 +75,20 @@
             this.OpenButton.Size = new System.Drawing.Size(202, 22);
             this.OpenButton.Text = "開く";
             this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.SaveButton.Size = new System.Drawing.Size(202, 22);
+            this.SaveButton.Text = "画像を保存";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(199, 6);
             // 
             // ExitButton
             // 
@@ -129,25 +143,11 @@
             this.ApplyMosaicBox.AutoSize = true;
             this.ApplyMosaicBox.Location = new System.Drawing.Point(453, 105);
             this.ApplyMosaicBox.Name = "ApplyMosaicBox";
-            this.ApplyMosaicBox.Size = new System.Drawing.Size(94, 16);
+            this.ApplyMosaicBox.Size = new System.Drawing.Size(111, 16);
             this.ApplyMosaicBox.TabIndex = 4;
-            this.ApplyMosaicBox.Text = "モザイクの有無";
+            this.ApplyMosaicBox.Text = "Removed Mosaic";
             this.ApplyMosaicBox.UseVisualStyleBackColor = true;
             this.ApplyMosaicBox.CheckedChanged += new System.EventHandler(this.ApplyMosaicBox_CheckedChanged);
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-            this.SaveButton.Size = new System.Drawing.Size(202, 22);
-            this.SaveButton.Text = "画像を保存";
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(199, 6);
             // 
             // Source
             // 
