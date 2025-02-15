@@ -7,6 +7,9 @@ namespace Censor_Me
 {
     internal class Detect
     {
+        //顔が検出されたかどうかのフラグ
+        public bool face = false;
+
         public Image Face(Image load_image, bool apply)
         {
             // Image型をMat型に変換
@@ -23,9 +26,10 @@ namespace Censor_Me
                     minSize: new OpenCvSharp.Size(50, 50)
                 );
 
-                if (faces.Length == 0)
+                face = faces.Length > 0;
+
+                if (!face)
                 {
-                    MessageBox.Show("顔が見つかりませんでした。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     // 元の画像をそのまま返す
                     return load_image;
                 }

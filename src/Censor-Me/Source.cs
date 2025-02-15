@@ -25,6 +25,7 @@ namespace Censor_Me
         private void Timer_Tick(object sender, EventArgs e)
         {
             StatusLabel.Text = "待機中";
+            StatusLabel.ForeColor = Color.Black;
             timer.Stop();
         }
 
@@ -55,6 +56,7 @@ namespace Censor_Me
 
         private void RunButton_Click(object sender, EventArgs e)
         {
+            StatusLabel.ForeColor = Color.Black;
             StatusLabel.Text = "画像を解析しています... ｜ " + filename;
             Is = ApplyMosaicBox.Checked;
 
@@ -64,8 +66,22 @@ namespace Censor_Me
             try
             {
                 MainPictureBox.Image = detect.Face(Load_Image, Is);
-                StatusLabel.Text = "画像の解析が完了しました。";
-                ApplyMosaicBox.Enabled = true;
+
+                if(detect.face == false)
+                {
+                    ApplyMosaicBox.Enabled = false;
+                    StatusLabel.ForeColor = Color.Red;
+                    StatusLabel.Text = "画像の解析に失敗しました。";
+                    //MessageBox.Show("顔が見つかりませんでした。", "Censor-Me", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+                else
+                {
+                    ApplyMosaicBox.Enabled = true;
+                    StatusLabel.ForeColor = Color.Green;
+                    StatusLabel.Text = "画像の解析に成功しました。";
+                }
+
                 timer.Start();
             }
             catch(Exception ex)
